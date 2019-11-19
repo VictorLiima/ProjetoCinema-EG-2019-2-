@@ -1,0 +1,17 @@
+Nome: João Victor de Lima Martins
+RA:1924710
+
+Na pasta Pacotes estão os códigos das classes existentes
+
+Na pasta Banco encontra-se o script do banco de dados gerado pelo phpmyAdmin
+
+Na pasta Bibliotecas encontra-se a biblioteca mysql conector, junit, hmacrest do java.
+
+Na pasta Pacotes Teste estão todas minhas classes de teste.
+
+Todas as interações nas telas, são feitas através do evento MouseClicked ou KeyReleased nas tabelas, para atualizar ou excluir, primeiramente deve escolher o objeta na tabela correspondente ao mesmo.
+
+As funções de busca dos objetos, foram feitas usando chaves de pesquisa específicas de cada objeto.
+Filmes -> chave de pesquisa é o seu título.
+Sala -> chave de pesquisa é o seu número(Número escolhido no cadastro, não o código que aparece na tabela).
+Sessão -> chave de pesquisa é o título do filme que deseja assistir.
