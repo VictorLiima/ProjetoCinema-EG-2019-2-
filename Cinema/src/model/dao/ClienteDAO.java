@@ -23,7 +23,7 @@ import model.bean.Cliente;
  * @author JVict
  */
 public class ClienteDAO {
-    public boolean createFilme(Cliente c) {
+    public boolean createCliente(Cliente c) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
 
@@ -151,5 +151,24 @@ public class ClienteDAO {
         }
 
         return clientes;
-    }    
+    }
+    
+    public void contabilizarPontos(int pontos, Cliente c, String cpf){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("UPDATE clientes SET pontuacao = ? WHERE cpf = ?");
+            stmt.setInt(1, c.getPontuacao());
+            stmt.setString(2, cpf);
+
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Pontos contabilizados com Sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao contabilizar os pontos : " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
 }

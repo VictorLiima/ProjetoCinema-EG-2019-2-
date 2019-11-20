@@ -28,13 +28,14 @@ public class SessaoDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO sessoes (filme,sala,data,horario,valor_ingresso,ingressos_disponiveis)VALUES(?,?,?,?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO sessoes (filme,sala,data,horario,valor_ingresso_inteira,valor_ingresso_meia,ingressos_disponiveis)VALUES(?,?,?,?,?,?,?)");
             stmt.setString(1, se.getFilme());
             stmt.setInt(2, se.getSala());
             stmt.setString(3, se.getData());
             stmt.setString(4, se.getHorario());
-            stmt.setInt(5, se.getValorIngresso());
-            stmt.setInt(6, se.getIngressosDisponiveis());
+            stmt.setInt(5, se.getValorIngressoInteira());
+            stmt.setInt(6, se.getValorIngressoMeia());
+            stmt.setInt(7, se.getIngressosDisponiveis());
 
             stmt.executeUpdate();
 
@@ -67,7 +68,8 @@ public class SessaoDAO {
                 sessao.setSala(rs.getInt("sala"));
                 sessao.setData(rs.getString("data"));
                 sessao.setHorario(rs.getString("horario"));
-                sessao.setValorIngresso(rs.getInt("valor_ingresso"));
+                sessao.setValorIngressoInteira(rs.getInt("valor_ingresso_inteira"));
+                sessao.setValorIngressoMeia(rs.getInt("valor_ingresso_meia"));
                 sessao.setIngressosDisponiveis(rs.getInt("ingressos_disponiveis"));
                 sessoes.add(sessao);
             }
@@ -85,14 +87,15 @@ public class SessaoDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("UPDATE sessoes SET filme = ?,sala = ?,data = ?,horario = ?,valor_ingresso = ?, ingressos_disponiveis =? WHERE idsessoes = ?");
+            stmt = con.prepareStatement("UPDATE sessoes SET filme = ?,sala = ?,data = ?,horario = ?,valor_ingresso_inteira = ?,valor_ingresso_meia = ?, ingressos_disponiveis =? WHERE idsessoes = ?");
             stmt.setString(1, se.getFilme());
             stmt.setInt(2, se.getSala());
             stmt.setString(3, se.getData());
             stmt.setString(4, se.getHorario());
-            stmt.setInt(5, se.getValorIngresso());
-            stmt.setInt(6, se.getIngressosDisponiveis());
-            stmt.setInt(7, se.getIdSessao());
+            stmt.setInt(5, se.getValorIngressoInteira());
+            stmt.setInt(6, se.getValorIngressoMeia());
+            stmt.setInt(7, se.getIngressosDisponiveis());
+            stmt.setInt(8, se.getIdSessao());
 
             stmt.executeUpdate();
 
@@ -107,7 +110,7 @@ public class SessaoDAO {
 
     }
 
-    public boolean vendaIngresso(Sessao se) throws SQLException {
+    public void vendaIngresso(Sessao se) throws SQLException {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         int ingressos = se.getIngressosDisponiveis() - se.getIngVendido();
@@ -116,16 +119,15 @@ public class SessaoDAO {
             stmt = con.prepareStatement("UPDATE sessoes SET ingressos_disponiveis = ? WHERE idsessoes = ? AND ingressos_disponiveis > 0");
             stmt.setInt(1, ingressos);
             stmt.setInt(2, se.getIdSessao());
-            System.out.println(" ing " + ingressos);
             stmt.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Ingressos vendidos com sucesso");
             ConnectionFactory.closeConnection(con, stmt);
-            return true;
+            
         } else {
             JOptionPane.showMessageDialog(null, "Quantidade de ingressos disponiveis é insuficiente.");
             ConnectionFactory.closeConnection(con, stmt);
-            return false;
+            
         }
 
     }
@@ -169,7 +171,8 @@ public class SessaoDAO {
                 sessao.setSala(rs.getInt("sala"));
                 sessao.setData(rs.getString("data"));
                 sessao.setHorario(rs.getString("horario"));
-                sessao.setValorIngresso(rs.getInt("valor_ingresso"));
+                sessao.setValorIngressoInteira(rs.getInt("valor_ingresso_inteira"));
+                sessao.setValorIngressoMeia(rs.getInt("valor_ingresso_meia"));
                 sessao.setIngressosDisponiveis(rs.getInt("ingressos_disponiveis"));
 
                 sessoes.add(sessao);
