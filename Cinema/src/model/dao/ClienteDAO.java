@@ -158,7 +158,7 @@ public class ClienteDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("UPDATE clientes SET pontuacao = ? WHERE cpf = ?");
+            stmt = con.prepareStatement("UPDATE clientes SET pontuacao = pontuacao + ? WHERE cpf = ?");
             stmt.setInt(1, c.getPontuacao());
             stmt.setString(2, cpf);
 
@@ -167,6 +167,26 @@ public class ClienteDAO {
             JOptionPane.showMessageDialog(null, "Pontos contabilizados com Sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao contabilizar os pontos : " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
+    public void descontarPontos(int pontos, Cliente c, String cpf){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        System.out.println("cpf "+ cpf);
+        try {
+            stmt = con.prepareStatement("UPDATE clientes SET pontuacao = pontuacao - ? WHERE cpf = ? AND pontuacao > ?");
+            stmt.setInt(1, c.getPontuacao());
+            stmt.setString(2, cpf);
+            stmt.setInt(3, c.getPontuacao());
+
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Venda concluida com Sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao efetuar a venda, ponto insuficientes : " + ex);
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }

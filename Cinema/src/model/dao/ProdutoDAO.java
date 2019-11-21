@@ -15,7 +15,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import model.bean.Cliente;
 import model.bean.Produto;
+import model.bean.Sessao;
 
 /**
  *
@@ -60,7 +62,7 @@ public class ProdutoDAO {
 
                 produto.setIdProduto(rs.getInt("idProduto"));
                 produto.setNomeProduto(rs.getString("nomeProduto"));
-                produto.setPreco(rs.getFloat("preco"));
+                produto.setPreco(rs.getInt("preco"));
                 produto.setPontosProd(rs.getInt("pontosProd"));
                 produtos.add(produto);
             }
@@ -96,30 +98,7 @@ public class ProdutoDAO {
         }
 
     }
-
-    /*public boolean vendaProduto(Produto p) throws SQLException {
-        Connection con = ConnectionFactory.getConnection();
-        PreparedStatement stmt = null;
-        int ingressos = se.getIngressosDisponiveis() - se.getIngVendido();
-        if (ingressos > 0) {
-
-            stmt = con.prepareStatement("UPDATE sessoes SET ingressos_disponiveis = ? WHERE idsessoes = ? AND ingressos_disponiveis > 0");
-            stmt.setInt(1, ingressos);
-            stmt.setInt(2, se.getIdSessao());
-            System.out.println(" ing " + ingressos);
-            stmt.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "Ingressos vendidos com sucesso");
-            ConnectionFactory.closeConnection(con, stmt);
-            return true;
-        } else {
-            JOptionPane.showMessageDialog(null, "Quantidade de ingressos disponiveis é insuficiente.");
-            ConnectionFactory.closeConnection(con, stmt);
-            return false;
-        }
-
-    }
-*/
+    
     public boolean deleteProduto(Produto p) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -156,7 +135,7 @@ public class ProdutoDAO {
                 Produto prod = new Produto();
                 prod.setIdProduto(rs.getInt("idProduto"));
                 prod.setNomeProduto(rs.getString("nomeproduto"));
-                prod.setPreco(rs.getFloat("preco"));
+                prod.setPreco(rs.getInt("preco"));
                 prod.setPontosProd(rs.getInt("pontosProd"));
                 
                 produtos.add(prod);
@@ -168,5 +147,27 @@ public class ProdutoDAO {
         }
 
         return produtos;
+    }
+    
+    public boolean vendaProduto(Produto p) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("UPDATE produtos SET vendas = vendas + ? WHERE idProduto = ?");
+            stmt.setInt(1, 1);
+            stmt.setInt(2, p.getIdProduto());
+
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Produto Vendido com Sucesso!");
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Vender o Produto : " + ex);
+            return false;
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+
     }
 }

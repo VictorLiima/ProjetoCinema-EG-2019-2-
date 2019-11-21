@@ -73,7 +73,7 @@ public class ViewMenu extends javax.swing.JFrame {
             });
         }
     }
-    
+
     public void readJTableProdutos() {
         DefaultTableModel modeloProdutos = (DefaultTableModel) jTableProduto.getModel();
         modeloProdutos.setNumRows(0);
@@ -87,7 +87,7 @@ public class ViewMenu extends javax.swing.JFrame {
             });
         }
     }
-    
+
     public void readJTableClientes() {
         DefaultTableModel modeloClientes = (DefaultTableModel) jTableClientes.getModel();
         modeloClientes.setNumRows(0);
@@ -149,7 +149,7 @@ public class ViewMenu extends javax.swing.JFrame {
             });
         }
     }
-    
+
     public void readJTableForSearchProduto(String nomeP) {
         DefaultTableModel modeloProduto = (DefaultTableModel) jTableProduto.getModel();
         modeloProduto.setNumRows(0);
@@ -176,7 +176,7 @@ public class ViewMenu extends javax.swing.JFrame {
             });
         }
     }
-    
+
     public void readJTableForSearchClientes(String nome) {
         DefaultTableModel modeloCliente = (DefaultTableModel) jTableClientes.getModel();
         modeloCliente.setNumRows(0);
@@ -337,7 +337,7 @@ public class ViewMenu extends javax.swing.JFrame {
         jButtonVendaProdutos = new javax.swing.JButton();
         jButtonVoltarProduto = new javax.swing.JButton();
         txtPreçoProduto = new javax.swing.JTextField();
-        jPanelVendaProduto = new javax.swing.JPanel();
+        txtQuantidadeCompra = new javax.swing.JTextField();
 
         jTextField5.setText("jTextField2");
 
@@ -1331,6 +1331,12 @@ public class ViewMenu extends javax.swing.JFrame {
             }
         });
 
+        txtQuantidadeCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtQuantidadeCompraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelProdutosLayout = new javax.swing.GroupLayout(jPanelProdutos);
         jPanelProdutos.setLayout(jPanelProdutosLayout);
         jPanelProdutosLayout.setHorizontalGroup(
@@ -1347,7 +1353,7 @@ public class ViewMenu extends javax.swing.JFrame {
                                 .addComponent(jButtonAtualizaProduto)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButtonExcluProduto)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                                 .addComponent(jButtonVoltarProduto))
                             .addGroup(jPanelProdutosLayout.createSequentialGroup()
                                 .addComponent(jLabel24)
@@ -1359,6 +1365,8 @@ public class ViewMenu extends javax.swing.JFrame {
                                 .addComponent(txtPontosProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(82, 82, 82)
                                 .addComponent(jButtonVendaProdutos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtQuantidadeCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(jPanelProdutosLayout.createSequentialGroup()
@@ -1396,7 +1404,8 @@ public class ViewMenu extends javax.swing.JFrame {
                     .addComponent(jLabel24)
                     .addComponent(txtPontosProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25)
-                    .addComponent(jButtonVendaProdutos))
+                    .addComponent(jButtonVendaProdutos)
+                    .addComponent(txtQuantidadeCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBuscaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1413,19 +1422,6 @@ public class ViewMenu extends javax.swing.JFrame {
         );
 
         jPanelPrincipal.add(jPanelProdutos);
-
-        javax.swing.GroupLayout jPanelVendaProdutoLayout = new javax.swing.GroupLayout(jPanelVendaProduto);
-        jPanelVendaProduto.setLayout(jPanelVendaProdutoLayout);
-        jPanelVendaProdutoLayout.setHorizontalGroup(
-            jPanelVendaProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanelVendaProdutoLayout.setVerticalGroup(
-            jPanelVendaProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        jPanelPrincipal.add(jPanelVendaProduto);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1451,41 +1447,50 @@ public class ViewMenu extends javax.swing.JFrame {
         jPanelFilmes.setVisible(true);
         jPanelSalas.setVisible(false);
         jPanelSessoes.setVisible(false);
-        
+        jPanelClientes.setVisible(false);
+        jPanelDefault.setVisible(false);
+        jPanelProdutos.setVisible(false);
+
         txtTitulo.setText("");
         txtDiretor.setText("");
         txtGenero.setText("");
         txtIdioma.setText("");
         txtDuracao.setText("");
-        
+
         readJTableFilmes();
     }//GEN-LAST:event_jButtonFilmesActionPerformed
 
     private void jButtonSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalasActionPerformed
         // TODO add your handling code here:
-        jPanelSalas.setVisible(true);
         jPanelFilmes.setVisible(false);
+        jPanelSalas.setVisible(true);
         jPanelSessoes.setVisible(false);
-        
+        jPanelClientes.setVisible(false);
+        jPanelDefault.setVisible(false);
+        jPanelProdutos.setVisible(false);
+
         txtBuscaSalas.setText("");
         txtNumero.setText("");
         txtCapacidade.setText("");
-        
+
         readJTableSala();
     }//GEN-LAST:event_jButtonSalasActionPerformed
 
     private void jButtonSessoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSessoesActionPerformed
         // TODO add your handling code here:
-        jPanelSessoes.setVisible(true);
         jPanelFilmes.setVisible(false);
         jPanelSalas.setVisible(false);
-        
+        jPanelSessoes.setVisible(true);
+        jPanelClientes.setVisible(false);
+        jPanelDefault.setVisible(false);
+        jPanelProdutos.setVisible(false);
+
         txtBuscaSessao.setText("");
         txtData.setText("");
         txtHorario.setText("");
         txtValor.setText("");
         txtQtdIngresso.setText("");
-        
+
         readJTableSessao();
     }//GEN-LAST:event_jButtonSessoesActionPerformed
 
@@ -1505,27 +1510,26 @@ public class ViewMenu extends javax.swing.JFrame {
         String textoIdioma = txtIdioma.getText();
         String textoDuracao = txtDuracao.getText();
         String textoVazio = "";
-        
-        
-        if(textoGenero.equals(textoVazio) || textoIdioma.equals(textoVazio) || textoDuracao.equals(textoVazio) || textoTitulo.equals(textoVazio) || textoDiretor.equals(textoVazio)){
+
+        if (textoGenero.equals(textoVazio) || textoIdioma.equals(textoVazio) || textoDuracao.equals(textoVazio) || textoTitulo.equals(textoVazio) || textoDiretor.equals(textoVazio)) {
             JOptionPane.showMessageDialog(null, "Os campos de texto não podem estar vazio!");
-        }else{
-        Filme f = new Filme();
-        FilmeDAO daoFilme = new FilmeDAO();
-        f.setTitulo(txtTitulo.getText());
-        f.setDiretor(txtDiretor.getText());
-        f.setGenero(txtGenero.getText());
-        f.setIdioma(txtIdioma.getText());
-        f.setDuracao(Integer.parseInt(txtDuracao.getText()));
-        daoFilme.createFilme(f);
-        jComboBoxFilmes.removeAllItems();
-        carregaCBoxF();
-        readJTableFilmes();
-        txtTitulo.setText("");
-        txtDiretor.setText("");
-        txtGenero.setText("");
-        txtIdioma.setText("");
-        txtDuracao.setText("");
+        } else {
+            Filme f = new Filme();
+            FilmeDAO daoFilme = new FilmeDAO();
+            f.setTitulo(txtTitulo.getText());
+            f.setDiretor(txtDiretor.getText());
+            f.setGenero(txtGenero.getText());
+            f.setIdioma(txtIdioma.getText());
+            f.setDuracao(Integer.parseInt(txtDuracao.getText()));
+            daoFilme.createFilme(f);
+            jComboBoxFilmes.removeAllItems();
+            carregaCBoxF();
+            readJTableFilmes();
+            txtTitulo.setText("");
+            txtDiretor.setText("");
+            txtGenero.setText("");
+            txtIdioma.setText("");
+            txtDuracao.setText("");
         }
     }//GEN-LAST:event_jButtonCadastrarFilmesActionPerformed
 
@@ -1545,7 +1549,7 @@ public class ViewMenu extends javax.swing.JFrame {
             txtGenero.setText("");
             txtIdioma.setText("");
             txtDuracao.setText("");
-            
+
             jComboBoxFilmes.removeAllItems();
             carregaCBoxF();
         }
@@ -1556,19 +1560,18 @@ public class ViewMenu extends javax.swing.JFrame {
         String textoNumero = txtNumero.getText();
         String textoCapacidade = txtCapacidade.getText();
         String textoVazio = "";
-        
-        
-        if(textoNumero.equals(textoVazio) || textoCapacidade.equals(textoVazio)){
+
+        if (textoNumero.equals(textoVazio) || textoCapacidade.equals(textoVazio)) {
             JOptionPane.showMessageDialog(null, "Os campos de texto não podem estar vazio!");
-        }else{
-        Sala s = new Sala();
-        SalaDAO daoSala = new SalaDAO();
-        s.setNumero(Integer.parseInt(txtNumero.getText()));
-        s.setCapacidade(Integer.parseInt(txtCapacidade.getText()));
-        daoSala.createSala(s);
-        readJTableSala();
-        jComboBoxSalas.removeAllItems();
-        carregaCBoxS();
+        } else {
+            Sala s = new Sala();
+            SalaDAO daoSala = new SalaDAO();
+            s.setNumero(Integer.parseInt(txtNumero.getText()));
+            s.setCapacidade(Integer.parseInt(txtCapacidade.getText()));
+            daoSala.createSala(s);
+            readJTableSala();
+            jComboBoxSalas.removeAllItems();
+            carregaCBoxS();
         }
 
     }//GEN-LAST:event_jButtonCadastrarSalasActionPerformed
@@ -1577,12 +1580,11 @@ public class ViewMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         String textoBuscaSe = txtBuscaSessao.getText();
         String textoVazio = "";
-        
-        
-        if(textoBuscaSe.equals(textoVazio)){
+
+        if (textoBuscaSe.equals(textoVazio)) {
             JOptionPane.showMessageDialog(null, "O campo de busca não pode estar vazio!");
-        }else{
-        readJTableForSearchSessao(txtBuscaSessao.getText());
+        } else {
+            readJTableForSearchSessao(txtBuscaSessao.getText());
         }
     }//GEN-LAST:event_jButtonBuscaSessoesActionPerformed
 
@@ -1593,43 +1595,42 @@ public class ViewMenu extends javax.swing.JFrame {
         String textoValor = txtValor.getText();
         String textoValorI = txtQtdIngresso.getText();
         String textoVazio = "";
-        
-       
+
         int resposta = JOptionPane.showConfirmDialog(null, "Deseja Informar seu cpf para contabilizar os pontos da compra?", "Venda de Ingressos", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (resposta == JOptionPane.YES_OPTION) {
             //Usuário clicou em Sim. Executar o código correspondente.
             String cpf = JOptionPane.showInputDialog("Informe seu CPF?");
-            if(textoData.equals(textoVazio) || textoHorario.equals(textoVazio) || textoValor.equals(textoVazio) || textoValorI.equals(textoVazio)){
-            JOptionPane.showMessageDialog(null, "O campo de quantidade de ingressos esta vazio!");
-            }else{
+            if (textoData.equals(textoVazio) || textoHorario.equals(textoVazio) || textoValor.equals(textoVazio) || textoValorI.equals(textoVazio)) {
+                JOptionPane.showMessageDialog(null, "O campo de quantidade de ingressos esta vazio!");
+            } else {
                 Sessao se = new Sessao();
                 SessaoDAO daoSessao = new SessaoDAO();
                 Cliente c = new Cliente();
                 ClienteDAO daoCliente = new ClienteDAO();
-                int pAtual = daoCliente.retornaPontos(cpf);
-                System.out.println("patual "+ pAtual);
                 int ingressosD = ((int) jTableSessao.getValueAt(jTableSessao.getSelectedRow(), 7));
                 int compraIng = (Integer.parseInt(txtQtdIngresso.getText()));
-                int valCompra = (pAtual + (Integer.parseInt(txtValor.getText())) * compraIng);
+                int valCompra = (Integer.parseInt(txtValor.getText())) * compraIng;
                 c.setPontuacao(valCompra);
                 se.setIngressosDisponiveis(ingressosD);
                 se.setIngVendido(compraIng);
                 se.setIdSessao((int) jTableSessao.getValueAt(jTableSessao.getSelectedRow(), 0));
-                    try {
-                        daoSessao.vendaIngresso(se);
-                        daoCliente.contabilizarPontos(valCompra, c, cpf);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ViewMenu.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                try {
+                    daoSessao.vendaIngresso(se);
+                    daoCliente.contabilizarPontos(valCompra, c, cpf);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ViewMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 readJTableSessao();
-                }   
+                JOptionPane.showMessageDialog(null, "Você comprou " + compraIng + " ingressos!\nValor total de R$" + valCompra + ",00!\n" + valCompra + " Pontos adicionados ao seu Cadastro!");
+            }
         } else if (resposta == JOptionPane.NO_OPTION) {
             //Usuário clicou em não. Executar o código correspondente.
-            
-            if(textoData.equals(textoVazio) || textoHorario.equals(textoVazio) || textoValor.equals(textoVazio) || textoValorI.equals(textoVazio)){
-            JOptionPane.showMessageDialog(null, "O campo de quantidade de ingressos esta vazio!");
-            }else{
-            Sessao se = new Sessao();
+
+            if (textoData.equals(textoVazio) || textoHorario.equals(textoVazio) || textoValor.equals(textoVazio) || textoValorI.equals(textoVazio)) {
+                JOptionPane.showMessageDialog(null, "O campo de quantidade de ingressos esta vazio!");
+            } else {
+                Sessao se = new Sessao();
                 SessaoDAO daoSessao = new SessaoDAO();
                 int ingressosD = ((int) jTableSessao.getValueAt(jTableSessao.getSelectedRow(), 7));
                 int compraIng = (Integer.parseInt(txtQtdIngresso.getText()));
@@ -1638,12 +1639,13 @@ public class ViewMenu extends javax.swing.JFrame {
                 se.setIngVendido(compraIng);
                 se.setIdSessao((int) jTableSessao.getValueAt(jTableSessao.getSelectedRow(), 0));
 
-                    try {
-                        daoSessao.vendaIngresso(se);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ViewMenu.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                try {
+                    daoSessao.vendaIngresso(se);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ViewMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 readJTableSessao();
+                JOptionPane.showMessageDialog(null, "Você comprou " + compraIng + "ingressos!\nValor total de R$" + valCompra + ",00!");
             }
         }
     }//GEN-LAST:event_jButtonVendaIngressoActionPerformed
@@ -1691,12 +1693,11 @@ public class ViewMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         String textoBuscaF = txtBuscaFilmes.getText();
         String textoVazio = "";
-        
-        
-        if(textoBuscaF.equals(textoVazio)){
+
+        if (textoBuscaF.equals(textoVazio)) {
             JOptionPane.showMessageDialog(null, "O campo de busca não pode estar vazio!");
-        }else{
-        readJTableForSearchFilmes(txtBuscaFilmes.getText());
+        } else {
+            readJTableForSearchFilmes(txtBuscaFilmes.getText());
         }
     }//GEN-LAST:event_jButtonBuscarFilmesActionPerformed
 
@@ -1719,30 +1720,29 @@ public class ViewMenu extends javax.swing.JFrame {
         String textoIdioma = txtIdioma.getText();
         String textoDuracao = txtDuracao.getText();
         String textoVazio = "";
-        
-        
-        if(textoGenero.equals(textoVazio) || textoIdioma.equals(textoVazio) || textoDuracao.equals(textoVazio) || textoTitulo.equals(textoVazio) || textoDiretor.equals(textoVazio)){
+
+        if (textoGenero.equals(textoVazio) || textoIdioma.equals(textoVazio) || textoDuracao.equals(textoVazio) || textoTitulo.equals(textoVazio) || textoDiretor.equals(textoVazio)) {
             JOptionPane.showMessageDialog(null, "Os campos de texto não podem estar vazio!");
-        }else{
-        Filme f = new Filme();
-        FilmeDAO daoFilme = new FilmeDAO();
-        f.setTitulo(txtTitulo.getText());
-        f.setDiretor(txtDiretor.getText());
-        f.setGenero(txtGenero.getText());
-        f.setIdioma(txtIdioma.getText());
-        f.setDuracao(Integer.parseInt(txtDuracao.getText()));
-        f.setIdFilme((int) jTableFilmes.getValueAt(jTableFilmes.getSelectedRow(), 0));
-        daoFilme.updateFilme(f);
+        } else {
+            Filme f = new Filme();
+            FilmeDAO daoFilme = new FilmeDAO();
+            f.setTitulo(txtTitulo.getText());
+            f.setDiretor(txtDiretor.getText());
+            f.setGenero(txtGenero.getText());
+            f.setIdioma(txtIdioma.getText());
+            f.setDuracao(Integer.parseInt(txtDuracao.getText()));
+            f.setIdFilme((int) jTableFilmes.getValueAt(jTableFilmes.getSelectedRow(), 0));
+            daoFilme.updateFilme(f);
 
-        jComboBoxFilmes.removeAllItems();
-        carregaCBoxF();
-        readJTableFilmes();
+            jComboBoxFilmes.removeAllItems();
+            carregaCBoxF();
+            readJTableFilmes();
 
-        txtTitulo.setText("");
-        txtDiretor.setText("");
-        txtGenero.setText("");
-        txtIdioma.setText("");
-        txtDuracao.setText("");
+            txtTitulo.setText("");
+            txtDiretor.setText("");
+            txtGenero.setText("");
+            txtIdioma.setText("");
+            txtDuracao.setText("");
         }
     }//GEN-LAST:event_jButtonAtualizarFilmesActionPerformed
 
@@ -1755,21 +1755,20 @@ public class ViewMenu extends javax.swing.JFrame {
         String textoNumero = txtNumero.getText();
         String textoCapacidade = txtCapacidade.getText();
         String textoVazio = "";
-        
-        
-        if(textoNumero.equals(textoVazio) || textoCapacidade.equals(textoVazio)){
-            JOptionPane.showMessageDialog(null, "Os campos de texto não podem estar vazio!");
-        }else{
-        Sala s = new Sala();
-        SalaDAO daoSala = new SalaDAO();
-        s.setNumero(Integer.parseInt(txtNumero.getText()));
-        s.setCapacidade(Integer.parseInt(txtCapacidade.getText()));
-        s.setIdSala((int) jTableSalas.getValueAt(jTableSalas.getSelectedRow(), 0));
-        daoSala.updateSala(s);
 
-        jComboBoxSalas.removeAllItems();
-        carregaCBoxS();
-        readJTableSala();
+        if (textoNumero.equals(textoVazio) || textoCapacidade.equals(textoVazio)) {
+            JOptionPane.showMessageDialog(null, "Os campos de texto não podem estar vazio!");
+        } else {
+            Sala s = new Sala();
+            SalaDAO daoSala = new SalaDAO();
+            s.setNumero(Integer.parseInt(txtNumero.getText()));
+            s.setCapacidade(Integer.parseInt(txtCapacidade.getText()));
+            s.setIdSala((int) jTableSalas.getValueAt(jTableSalas.getSelectedRow(), 0));
+            daoSala.updateSala(s);
+
+            jComboBoxSalas.removeAllItems();
+            carregaCBoxS();
+            readJTableSala();
         }
     }//GEN-LAST:event_jButtonAtualizarSalasActionPerformed
 
@@ -1792,12 +1791,11 @@ public class ViewMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         String textoBuscaSa = txtBuscaSalas.getText();
         String textoVazio = "";
-        
-        
-        if(textoBuscaSa.equals(textoVazio)){
+
+        if (textoBuscaSa.equals(textoVazio)) {
             JOptionPane.showMessageDialog(null, "O campo de busca não pode estar vazio!");
-        }else{
-        readJTableForSearchSalas(Integer.parseInt(txtBuscaSalas.getText()));
+        } else {
+            readJTableForSearchSalas(Integer.parseInt(txtBuscaSalas.getText()));
         }
     }//GEN-LAST:event_jButtonBuscarSalasActionPerformed
 
@@ -1816,25 +1814,24 @@ public class ViewMenu extends javax.swing.JFrame {
         String textoHorario = txtHorario.getText();
         String textoValor = txtValor.getText();
         String textoVazio = "";
-        
-        
-        if(textoData.equals(textoVazio) || textoHorario.equals(textoVazio) || textoValor.equals(textoVazio)){
+
+        if (textoData.equals(textoVazio) || textoHorario.equals(textoVazio) || textoValor.equals(textoVazio)) {
             JOptionPane.showMessageDialog(null, "Os campos de texto não podem estar vazio!");
-        }else{
-        Sessao se = new Sessao();
-        Filme f = (Filme) jComboBoxFilmes.getSelectedItem();
-        Sala s = (Sala) jComboBoxSalas.getSelectedItem();
-        SessaoDAO daoSessao = new SessaoDAO();
-        int valorI = (Integer.parseInt(txtValor.getText()));
-        se.setFilme(f.getTitulo());
-        se.setSala(s.getNumero());
-        se.setData((String) (txtData.getText()));
-        se.setHorario((String) (txtHorario.getText()));
-        se.setValorIngressoInteira(valorI);
-        se.setValorIngressoMeia(valorI/2);
-        se.setIngressosDisponiveis(s.getCapacidade());
-        daoSessao.createSessao(se);
-        readJTableSessao();
+        } else {
+            Sessao se = new Sessao();
+            Filme f = (Filme) jComboBoxFilmes.getSelectedItem();
+            Sala s = (Sala) jComboBoxSalas.getSelectedItem();
+            SessaoDAO daoSessao = new SessaoDAO();
+            int valorI = (Integer.parseInt(txtValor.getText()));
+            se.setFilme(f.getTitulo());
+            se.setSala(s.getNumero());
+            se.setData((String) (txtData.getText()));
+            se.setHorario((String) (txtHorario.getText()));
+            se.setValorIngressoInteira(valorI);
+            se.setValorIngressoMeia(valorI / 2);
+            se.setIngressosDisponiveis(s.getCapacidade());
+            daoSessao.createSessao(se);
+            readJTableSessao();
         }
     }//GEN-LAST:event_jButtonCadastroSessaoActionPerformed
 
@@ -1844,27 +1841,26 @@ public class ViewMenu extends javax.swing.JFrame {
         String textoHorario = txtHorario.getText();
         String textoValor = txtValor.getText();
         String textoVazio = "";
-        
-        
-        if(textoData.equals(textoVazio) || textoHorario.equals(textoVazio) || textoValor.equals(textoVazio)){
-            JOptionPane.showMessageDialog(null, "Os campos de texto não podem estar vazio!");
-        }else{
-        Sessao se = new Sessao();
-        Filme f = (Filme) jComboBoxFilmes.getSelectedItem();
-        Sala s = (Sala) jComboBoxSalas.getSelectedItem();
-        SessaoDAO daoSessao = new SessaoDAO();
-        int valorI = (Integer.parseInt(txtValor.getText()));
-        se.setFilme(f.getTitulo());
-        se.setSala(s.getNumero());
-        se.setData((String) (txtData.getText()));
-        se.setHorario((String) (txtHorario.getText()));
-        se.setValorIngressoInteira(valorI);
-        se.setValorIngressoMeia(valorI/2);
-        se.setIngressosDisponiveis((int) jTableSessao.getValueAt(jTableSessao.getSelectedRow(), 6));
-        se.setIdSessao((int) jTableSessao.getValueAt(jTableSessao.getSelectedRow(), 0));
 
-        daoSessao.updateSessao(se);
-        readJTableSessao();
+        if (textoData.equals(textoVazio) || textoHorario.equals(textoVazio) || textoValor.equals(textoVazio)) {
+            JOptionPane.showMessageDialog(null, "Os campos de texto não podem estar vazio!");
+        } else {
+            Sessao se = new Sessao();
+            Filme f = (Filme) jComboBoxFilmes.getSelectedItem();
+            Sala s = (Sala) jComboBoxSalas.getSelectedItem();
+            SessaoDAO daoSessao = new SessaoDAO();
+            int valorI = (Integer.parseInt(txtValor.getText()));
+            se.setFilme(f.getTitulo());
+            se.setSala(s.getNumero());
+            se.setData((String) (txtData.getText()));
+            se.setHorario((String) (txtHorario.getText()));
+            se.setValorIngressoInteira(valorI);
+            se.setValorIngressoMeia(valorI / 2);
+            se.setIngressosDisponiveis((int) jTableSessao.getValueAt(jTableSessao.getSelectedRow(), 6));
+            se.setIdSessao((int) jTableSessao.getValueAt(jTableSessao.getSelectedRow(), 0));
+
+            daoSessao.updateSessao(se);
+            readJTableSessao();
         }
     }//GEN-LAST:event_jButtonAtualizaSessaoActionPerformed
 
@@ -1947,29 +1943,28 @@ public class ViewMenu extends javax.swing.JFrame {
         jPanelClientes.setVisible(false);
         jPanelDefault.setVisible(false);
         jPanelProdutos.setVisible(true);
-        
-        
+
         txtPontosProduto.setText("");
         txtPreçoProduto.setText("");
         txtProduto.setText("");
-        
+
         readJTableProdutos();
     }//GEN-LAST:event_jButtonProdutosActionPerformed
 
     private void jButtonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClientesActionPerformed
         // TODO add your handling code here:
-        jPanelDefault.setVisible(false);
-        jPanelProdutos.setVisible(false);
+        jPanelFilmes.setVisible(false);
         jPanelSalas.setVisible(false);
         jPanelSessoes.setVisible(false);
-        jPanelFilmes.setVisible(false);
         jPanelClientes.setVisible(true);
-        
+        jPanelDefault.setVisible(false);
+        jPanelProdutos.setVisible(false);
+
         txtNome.setText("");
         txtCpf.setText("");
         txtNascimento.setText("");
         txtBuscaCliente.setText("");
-        
+
         readJTableClientes();
     }//GEN-LAST:event_jButtonClientesActionPerformed
 
@@ -1979,17 +1974,17 @@ public class ViewMenu extends javax.swing.JFrame {
         String textoCpf = txtCpf.getText();
         String textoNascimento = txtNascimento.getText();
         String textoVazio = "";
-        
-        if(textoNome.equals(textoVazio) || textoCpf.equals(textoVazio) || textoNascimento.equals(textoVazio)){
+
+        if (textoNome.equals(textoVazio) || textoCpf.equals(textoVazio) || textoNascimento.equals(textoVazio)) {
             JOptionPane.showMessageDialog(null, "Os campos de texto não podem estar vazio!");
-        }else{
-        Cliente c = new Cliente();
-        ClienteDAO daoCliente = new ClienteDAO();
-        c.setNome(txtNome.getText());
-        c.setCpf(txtCpf.getText());
-        c.setNascimento((String) (txtNascimento.getText()));
-        daoCliente.createCliente(c);
-        readJTableClientes();
+        } else {
+            Cliente c = new Cliente();
+            ClienteDAO daoCliente = new ClienteDAO();
+            c.setNome(txtNome.getText());
+            c.setCpf(txtCpf.getText());
+            c.setNascimento((String) (txtNascimento.getText()));
+            daoCliente.createCliente(c);
+            readJTableClientes();
         }
     }//GEN-LAST:event_jButtonCadastrarCLientesActionPerformed
 
@@ -1999,20 +1994,19 @@ public class ViewMenu extends javax.swing.JFrame {
         String textoCpf = txtCpf.getText();
         String textoNascimento = txtNascimento.getText();
         String textoVazio = "";
-        
-        
-        if(textoNome.equals(textoVazio) || textoCpf.equals(textoVazio) || textoNascimento.equals(textoVazio)){
-            JOptionPane.showMessageDialog(null, "Os campos de texto não podem estar vazio!");
-        }else{
-        Cliente c = new Cliente();
-        ClienteDAO daoCliente = new ClienteDAO();
-        c.setNome(txtNome.getText());
-        c.setCpf(txtCpf.getText());
-        c.setNascimento((String) (txtNascimento.getText()));
-        c.setIdCliente((int) jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 0));
 
-        daoCliente.updateCliente(c);
-        readJTableClientes();
+        if (textoNome.equals(textoVazio) || textoCpf.equals(textoVazio) || textoNascimento.equals(textoVazio)) {
+            JOptionPane.showMessageDialog(null, "Os campos de texto não podem estar vazio!");
+        } else {
+            Cliente c = new Cliente();
+            ClienteDAO daoCliente = new ClienteDAO();
+            c.setNome(txtNome.getText());
+            c.setCpf(txtCpf.getText());
+            c.setNascimento((String) (txtNascimento.getText()));
+            c.setIdCliente((int) jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 0));
+
+            daoCliente.updateCliente(c);
+            readJTableClientes();
         }
     }//GEN-LAST:event_jButtonAtualizarCLientesActionPerformed
 
@@ -2051,12 +2045,11 @@ public class ViewMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         String textoBuscaC = txtBuscaCliente.getText();
         String textoVazio = "";
-        
-        
-        if(textoBuscaC.equals(textoVazio)){
+
+        if (textoBuscaC.equals(textoVazio)) {
             JOptionPane.showMessageDialog(null, "O campo de busca não pode estar vazio!");
-        }else{
-        readJTableForSearchClientes(txtBuscaCliente.getText());
+        } else {
+            readJTableForSearchClientes(txtBuscaCliente.getText());
         }
     }//GEN-LAST:event_jButtonBuscarClienteActionPerformed
 
@@ -2096,21 +2089,20 @@ public class ViewMenu extends javax.swing.JFrame {
         String textoPreco = txtPreçoProduto.getText();
         String textoPontos = txtPontosProduto.getText();
         String textoVazio = "";
-        
-        
-        if(textoProduto.equals(textoVazio) || textoPreco.equals(textoVazio) || textoPontos.equals(textoVazio) || textoPontos.equals(textoVazio)){
+
+        if (textoProduto.equals(textoVazio) || textoPreco.equals(textoVazio) || textoPontos.equals(textoVazio) || textoPontos.equals(textoVazio)) {
             JOptionPane.showMessageDialog(null, "Os campos de texto não podem estar vazio!");
-        }else{
-        Produto p = new Produto();
-        ProdutoDAO daoProduto = new ProdutoDAO();
-        p.setNomeProduto(textoProduto);
-        p.setPontosProd(Integer.parseInt(textoPontos));
-        p.setPreco(Float.parseFloat(textoPreco));
-        daoProduto.createProduto(p);
-        readJTableProdutos();
-        txtProduto.setText("");
-        txtPreçoProduto.setText("");
-        txtPontosProduto.setText("");
+        } else {
+            Produto p = new Produto();
+            ProdutoDAO daoProduto = new ProdutoDAO();
+            p.setNomeProduto(textoProduto);
+            p.setPontosProd(Integer.parseInt(textoPontos));
+            p.setPreco(Float.parseFloat(textoPreco));
+            daoProduto.createProduto(p);
+            readJTableProdutos();
+            txtProduto.setText("");
+            txtPreçoProduto.setText("");
+            txtPontosProduto.setText("");
         }
     }//GEN-LAST:event_jButtonCadastroProdutoActionPerformed
 
@@ -2124,19 +2116,19 @@ public class ViewMenu extends javax.swing.JFrame {
         String textoPreco = txtPreçoProduto.getText();
         String textoPontos = txtPontosProduto.getText();
         String textoVazio = "";
-        
-        if(textoProduto.equals(textoVazio) || textoPreco.equals(textoVazio) || textoPontos.equals(textoVazio)){
-            JOptionPane.showMessageDialog(null, "Os campos de texto não podem estar vazio!");
-        }else{
-        Produto p = new Produto();
-        ProdutoDAO daoProduto = new ProdutoDAO();
-        p.setNomeProduto(txtProduto.getText());
-        p.setPontosProd(Integer.parseInt(txtPontosProduto.getText()));
-        p.setPreco(Float.parseFloat(txtPontosProduto.getText()));
-        p.setIdProduto((int) jTableProduto.getValueAt(jTableProduto.getSelectedRow(), 0));
-        daoProduto.updateProduto(p);
 
-        readJTableProdutos();
+        if (textoProduto.equals(textoVazio) || textoPreco.equals(textoVazio) || textoPontos.equals(textoVazio)) {
+            JOptionPane.showMessageDialog(null, "Os campos de texto não podem estar vazio!");
+        } else {
+            Produto p = new Produto();
+            ProdutoDAO daoProduto = new ProdutoDAO();
+            p.setNomeProduto(txtProduto.getText());
+            p.setPontosProd(Integer.parseInt(txtPontosProduto.getText()));
+            p.setPreco(Float.parseFloat(txtPontosProduto.getText()));
+            p.setIdProduto((int) jTableProduto.getValueAt(jTableProduto.getSelectedRow(), 0));
+            daoProduto.updateProduto(p);
+
+            readJTableProdutos();
         }
     }//GEN-LAST:event_jButtonAtualizaProdutoActionPerformed
 
@@ -2144,12 +2136,11 @@ public class ViewMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         String textoBuscaP = txtBuscaProduto.getText();
         String textoVazio = "";
-        
-        
-        if(textoBuscaP.equals(textoVazio)){
+
+        if (textoBuscaP.equals(textoVazio)) {
             JOptionPane.showMessageDialog(null, "O campo de busca não pode estar vazio!");
-        }else{
-        readJTableForSearchProduto(txtBuscaProduto.getText());
+        } else {
+            readJTableForSearchProduto(txtBuscaProduto.getText());
         }
     }//GEN-LAST:event_jButtonBuscaProdutosActionPerformed
 
@@ -2168,6 +2159,52 @@ public class ViewMenu extends javax.swing.JFrame {
 
     private void jButtonVendaProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVendaProdutosActionPerformed
         // TODO add your handling code here:
+        String textoQuantidade = txtQuantidadeCompra.getText();
+        String textoVazio = "";
+
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja Informar seu cpf para descontar dos pontos acumulados?", "Venda de Produtos", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (resposta == JOptionPane.YES_OPTION) {
+            //Usuário clicou em Sim. Executar o código correspondente.
+            if (textoQuantidade.equals(textoVazio)) {
+                JOptionPane.showMessageDialog(null, "O campo de quantidade de produtos esta vazio!");
+            } else {
+                String cpf = JOptionPane.showInputDialog("Informe seu CPF para descontarmos os pontos?");
+                Produto p = new Produto();
+                ProdutoDAO daoProduto = new ProdutoDAO();
+                Cliente c = new Cliente();
+                ClienteDAO daoCliente = new ClienteDAO();
+                int compraP = (Integer.parseInt(txtQuantidadeCompra.getText()));
+                int valCompra = (int) ((Float.parseFloat(txtPreçoProduto.getText())) * compraP);
+                c.setPontuacao(valCompra);
+                p.setIdProduto((int) jTableProduto.getValueAt(jTableProduto.getSelectedRow(), 0));
+                p.setNomeProduto((String) jTableProduto.getValueAt(jTableProduto.getSelectedRow(), 1));
+                daoProduto.vendaProduto(p);
+                daoCliente.descontarPontos(valCompra, c, cpf);
+                readJTableClientes();
+                JOptionPane.showMessageDialog(null, "Você comprou " + compraP + " " + p.getNomeProduto() + "\nValor total de R$" + valCompra + ",00!\n" + valCompra + " Pontos retirados do seu Cadastro!");
+            }
+        } else if (resposta == JOptionPane.NO_OPTION) {
+            //Usuário clicou em não. Executar o código correspondente.
+            if (textoQuantidade.equals(textoVazio)) {
+                JOptionPane.showMessageDialog(null, "O campo de quantidade de produtos esta vazio!");
+            } else {
+                String cpf = JOptionPane.showInputDialog("Informe seu CPF para acrescentar os pontos?");
+                Produto p = new Produto();
+                ProdutoDAO daoProduto = new ProdutoDAO();
+                Cliente c = new Cliente();
+                ClienteDAO daoCliente = new ClienteDAO();
+                int compraP = (Integer.parseInt(txtQuantidadeCompra.getText()));
+                int valCompra = (int) ((Float.parseFloat(txtPreçoProduto.getText())) * compraP);
+                c.setPontuacao(valCompra);
+                p.setIdProduto((int) jTableProduto.getValueAt(jTableProduto.getSelectedRow(), 0));
+                p.setNomeProduto((String) jTableProduto.getValueAt(jTableProduto.getSelectedRow(), 1));
+                daoProduto.vendaProduto(p);
+                daoCliente.contabilizarPontos(valCompra, c, cpf);
+                readJTableClientes();
+                JOptionPane.showMessageDialog(null, "Você comprou " + compraP + " " + p.getNomeProduto() + "\nValor total de R$" + valCompra + ",00!\n" + valCompra + " Pontos acrescentados do seu Cadastro!");
+            }
+        }
+
     }//GEN-LAST:event_jButtonVendaProdutosActionPerformed
 
     private void jButtonVoltarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarProdutoActionPerformed
@@ -2181,6 +2218,10 @@ public class ViewMenu extends javax.swing.JFrame {
     private void txtPontosProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPontosProdutoActionPerformed
         // TODO add your handling code here:]
     }//GEN-LAST:event_txtPontosProdutoActionPerformed
+
+    private void txtQuantidadeCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQuantidadeCompraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2288,7 +2329,6 @@ public class ViewMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelProdutos;
     private javax.swing.JPanel jPanelSalas;
     private javax.swing.JPanel jPanelSessoes;
-    private javax.swing.JPanel jPanelVendaProduto;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -2320,6 +2360,7 @@ public class ViewMenu extends javax.swing.JFrame {
     private javax.swing.JTextField txtPreçoProduto;
     private javax.swing.JTextField txtProduto;
     private javax.swing.JTextField txtQtdIngresso;
+    private javax.swing.JTextField txtQuantidadeCompra;
     private javax.swing.JTextField txtTitulo;
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables

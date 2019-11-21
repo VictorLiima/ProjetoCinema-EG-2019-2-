@@ -14,6 +14,7 @@ public class Produto {
     private String nomeProduto;
     private float preco;
     private int pontosProd;
+    private int vendas;
 
     /**
      * @return the idProduto
@@ -69,5 +70,19 @@ public class Produto {
      */
     public void setPontosProd(int pontosProd) {
         this.pontosProd = pontosProd;
+    }
+
+    /**
+     * @return the vendas
+     */
+    public int getVendas() {
+        return vendas;
+    }
+
+    /**
+     * @param vendas the vendas to set
+     */
+    public void setVendas(int vendas) {
+        this.vendas = vendas;
     }
 }
