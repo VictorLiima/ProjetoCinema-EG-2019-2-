@@ -20,8 +20,10 @@ public class Sessao {
     private int sala;
     private String data;
     private String horario;
-    private int valorIngresso;
+    private int valorIngressoInteira;
+    private int valorIngressoMeia;
     private int ingressosDisponiveis;
+    private int ingVendido;
     /**
      * @return the idSessao
      */
@@ -92,19 +94,6 @@ public class Sessao {
         this.horario = horario;
     }
 
-    /**
-     * @return the valorIngresso
-     */
-    public int getValorIngresso() {
-        return valorIngresso;
-    }
-
-    /**
-     * @param valorIngresso the valorIngresso to set
-     */
-    public void setValorIngresso(int valorIngresso) {
-        this.valorIngresso = valorIngresso;
-    }
 
     /**
      * @return the ingressosDisponiveis
@@ -118,5 +107,47 @@ public class Sessao {
      */
     public void setIngressosDisponiveis(int ingressosDisponiveis) {
         this.ingressosDisponiveis = ingressosDisponiveis;
+    }
+
+    /**
+     * @return the ingVendido
+     */
+    public int getIngVendido() {
+        return ingVendido;
+    }
+
+    /**
+     * @param ingVendido the ingVendido to set
+     */
+    public void setIngVendido(int ingVendido) {
+        this.ingVendido = ingVendido;
+    }
+
+    /**
+     * @return the valorIngressoInteira
+     */
+    public int getValorIngressoInteira() {
+        return valorIngressoInteira;
+    }
+
+    /**
+     * @param valorIngressoInteira the valorIngressoInteira to set
+     */
+    public void setValorIngressoInteira(int valorIngressoInteira) {
+        this.valorIngressoInteira = valorIngressoInteira;
+    }
+
+    /**
+     * @return the valorIngressoMeia
+     */
+    public int getValorIngressoMeia() {
+        return valorIngressoMeia;
+    }
+
+    /**
+     * @param valorIngressoMeia the valorIngressoMeia to set
+     */
+    public void setValorIngressoMeia(int valorIngressoMeia) {
+        this.valorIngressoMeia = valorIngressoMeia;
     }
 }

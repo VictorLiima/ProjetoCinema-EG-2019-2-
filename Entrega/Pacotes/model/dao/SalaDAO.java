@@ -22,7 +22,7 @@ import model.bean.Sala;
  * @author JVict
  */
 public class SalaDAO {
-    public void createSala(Sala s){
+    public boolean createSala(Sala s){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
@@ -34,9 +34,11 @@ public class SalaDAO {
             stmt.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Sala inserida com Sucesso!");
+            return true;
             
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null,"Erro ao adicionar a sala : "+ex);
+                return false;
             }finally{
                 ConnectionFactory.closeConnection(con, stmt);
             }      
@@ -70,7 +72,7 @@ public class SalaDAO {
         return salas;
     }
     
-    public void updateSala(Sala s){
+    public boolean updateSala(Sala s){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
@@ -83,9 +85,11 @@ public class SalaDAO {
             stmt.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Sala atualizada com Sucesso!");
+            return true;
             
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null,"Erro ao atualizar a Sala : "+ex);
+                return false;
             }finally{
                 ConnectionFactory.closeConnection(con, stmt);
             }      
@@ -93,7 +97,7 @@ public class SalaDAO {
         }
     
     
-    public void deleteSala(Sala s){
+    public boolean deleteSala(Sala s){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
@@ -104,9 +108,11 @@ public class SalaDAO {
             stmt.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Sala excluida com Sucesso!");
+            return true;
             
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null,"Erro ao excluir a Sala : "+ex);
+                return false;
             }finally{
                 ConnectionFactory.closeConnection(con, stmt);
             }      

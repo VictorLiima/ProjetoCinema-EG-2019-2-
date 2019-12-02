@@ -23,7 +23,7 @@ import model.bean.Filme;
  */
 public class FilmeDAO {
 
-    public void createFilme(Filme f) {
+    public boolean createFilme(Filme f) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
 
@@ -38,9 +38,10 @@ public class FilmeDAO {
             stmt.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Filme inserido com Sucesso!");
-
+            return true;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao adicionar o fime : " + ex);
+            return false;
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
@@ -77,7 +78,7 @@ public class FilmeDAO {
         return filmes;
     }
 
-    public void updateFilme(Filme f) {
+    public boolean updateFilme(Filme f) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
 
@@ -93,16 +94,18 @@ public class FilmeDAO {
             stmt.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Filme atualizado com Sucesso!");
-
+            
+            return true;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar o fime : " + ex);
+            return false;
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
 
     }
 
-    public void deleteFilme(Filme f) {
+    public boolean deleteFilme(Filme f) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
 
@@ -113,9 +116,10 @@ public class FilmeDAO {
             stmt.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Filme excluido com Sucesso!");
-
+             return true;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao excluir o fime : " + ex);
+            return false;
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
